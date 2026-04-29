@@ -40,6 +40,11 @@ Real on-chain flows (mint, deploy, swap, bridge, faucet claim) require the walle
 Clone the repository, install dependencies, and fill in your `.env`:
 
 ```bash
+## Install
+npx skills add omnihub-xyz/omnihub-skill -g -a claude-code -y
+
+## Manual Installation
+## Clone this repository to your skills directory:
 git clone https://github.com/omnihub-xyz/omnihub-skill.git ~/.claude/skills/omnihub-skill
 cd omnihub-skill
 npm install
