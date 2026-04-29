@@ -1,0 +1,69 @@
+[
+  {
+    "inputs": [
+      {
+        "components": [
+          { "internalType": "string",  "name": "name",        "type": "string"  },
+          { "internalType": "string",  "name": "symbol",      "type": "string"  },
+          { "internalType": "string",  "name": "description", "type": "string"  },
+          { "internalType": "uint256", "name": "supply",      "type": "uint256" },
+          { "internalType": "uint256", "name": "royalty",     "type": "uint256" },
+          { "internalType": "bool",    "name": "transferable","type": "bool"    },
+          {
+            "components": [
+              { "internalType": "string",  "name": "title",         "type": "string"  },
+              { "internalType": "uint256", "name": "from",          "type": "uint256" },
+              { "internalType": "uint256", "name": "to",            "type": "uint256" },
+              { "internalType": "uint256", "name": "price",         "type": "uint256" },
+              { "internalType": "uint256", "name": "maxPerAddress", "type": "uint256" },
+              { "internalType": "bytes32", "name": "merkleRoot",    "type": "bytes32" }
+            ],
+            "internalType": "struct Phase",
+            "name": "phase",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              { "internalType": "string", "name": "contractURI", "type": "string" },
+              { "internalType": "string", "name": "baseURI",     "type": "string" },
+              { "internalType": "string", "name": "imageURI",    "type": "string" },
+              { "internalType": "bool",   "name": "jsonFormat",  "type": "bool"   }
+            ],
+            "internalType": "struct Metadata",
+            "name": "metadata",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct CreateParams",
+        "name": "_params",
+        "type": "tuple"
+      }
+    ],
+    "name": "create",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "createFee",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "deployProtocolFee",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "address", "name": "collection", "type": "address" }
+    ],
+    "name": "Created",
+    "type": "event"
+  }
+]

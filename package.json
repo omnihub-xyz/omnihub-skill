@@ -1,0 +1,53 @@
+{
+  "name": "omnihub-skill",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Conversational Claude Code skill for OmniHub: discover NFT collections, mint, claim faucet tokens, deploy collections, and swap/bridge funds via LI.FI.",
+  "scripts": {
+    "build": "tsc",
+    "tool": "tsx src/runTool.ts",
+    "tools:check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "token-balance": "tsx src/tools/getTokenBalance.ts",
+    "fiat-to-token": "tsx src/tools/resolveFiatAmount.ts",
+    "omnihub:chains": "tsx src/tools/listSupportedChains.ts",
+    "omnihub:explore": "tsx src/tools/listExploreCollections.ts",
+    "omnihub:discover": "tsx src/tools/listDiscoverCollections.ts",
+    "omnihub:editions": "tsx src/tools/listEditionCollections.ts",
+    "omnihub:drops": "tsx src/tools/listDropCollections.ts",
+    "omnihub:collection": "tsx src/tools/getCollectionDetails.ts",
+    "omnihub:holders": "tsx src/tools/getCollectionHolders.ts",
+    "mint:resolve-top": "tsx src/tools/resolveTopCollectionForMint.ts",
+    "mint:prepare": "tsx src/tools/prepareMint.ts",
+    "mint:execute": "tsx src/tools/executeMint.ts",
+    "mint:flow": "tsx src/tools/mintFlow.ts",
+    "collection:prepare": "tsx src/tools/prepareCollectionDeploy.ts",
+    "collection:deploy": "tsx src/tools/executeCollectionDeploy.ts",
+    "omnihub:faucet:check": "tsx src/tools/checkFaucetAvailability.ts",
+    "omnihub:faucet": "tsx src/tools/claimFaucet.ts",
+    "omnihub:faucet:pass-check": "tsx src/tools/checkFaucetPassBalance.ts",
+    "omnihub:faucet:pass-flow": "tsx src/tools/faucetPassFlow.ts",
+    "lifi:bridge": "tsx src/tools/lifi/bridgeCli.ts",
+    "lifi:chains": "tsx src/tools/lifi/getChains.ts",
+    "lifi:tokens": "tsx src/tools/lifi/getTokens.ts",
+    "lifi:tools": "tsx src/tools/lifi/getTools.ts",
+    "lifi:quote": "tsx src/tools/lifi/prepareQuote.ts",
+    "lifi:routes": "tsx src/tools/lifi/prepareRoutes.ts",
+    "lifi:status": "tsx src/tools/lifi/getStatus.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "viem": "^2.47.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "prettier": "^3.3.3",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}
