@@ -12,15 +12,23 @@ This is a Claude Code skill for the [OmniHub](https://omnihub.xyz) NFT platform.
 
 Under the hood the skill drives a small library of typed wallet tools built on [viem](https://viem.sh) and backed by OmniHub's `/api/chains` registry, so every supported network, RPC, factory address, and faucet flag is resolved at runtime rather than hardcoded.
 
-## Supported Chains
+## Installing the Skill
 
-This skill supports all chains currently available through OmniHub's chain registry — 70 networks at the time this section was generated, including 47 mainnets and 23 testnets. The skill resolves every chain's id, RPC, factory address, and faucet flag from `/api/chains` at runtime, so newly added networks become usable without any code change in this repo.
 
-**Mainnets:** Ethereum, Base, Optimism, Arbitrum One, Polygon, BNB Smart Chain, Avalanche, Linea, Scroll, Blast, Mantle, Mode, Zora, Taiko, Shape, Unichain, Soneium, Ink, Lisk, Morph, World Chain, Berachain, Hyper EVM, Sei Network, Ronin, Kaia, Story, Monad, MegaETH, Citrea, Stable, 0G, Mitosis, Plume, Somnia, Mezo, Ape Chain, Hemi, Gravity, Lens, Bob, Katana, Rari, Camp, Botanix, Plasma, Gate Layer.
+```bash
+npx skills add omnihub-xyz/omnihub-skill -g -a claude-code -y
+```
+## Manual Installation
+Clone the repository, install dependencies, and fill in your `.env`:
+```bash
+git clone https://github.com/omnihub-xyz/omnihub-skill.git ~/.claude/skills/omnihub-skill
+cd omnihub-skill
+npm install
+cp .env.example .env          # then fill in PRIVATE_KEY
+npm run tools:check           # optional — type-checks every tool
+```
 
-**Testnets:** Sepolia, OPN Testnet, Push Testnet, Stable Testnet, Arc Testnet, Pharos Atlantic Testnet, Neura Testnet, Giwa Testnet, IRYS Testnet, Fluent Testnet, ZenChain Testnet, Kii Testnet, Doma Testnet, Kite AI Testnet, RISE Testnet, Helios Testnet, X1 Testnet, Mawari Testnet, SANDchain Testnet, Robinhood Testnet, Tempo Testnet, SRW Testnet, LitVM LiteForge.
-
-This list was generated from the OmniHub `/api/chains` registry at the time of this README update. It is a static snapshot — for the live set of supported chains and their faucet/RPC flags, query `/api/chains` directly or run a discovery tool against any chain alias above.
+The skill definition lives at [`.claude/skills/omnihub-skill/SKILL.md`](.claude/skills/omnihub-skill/SKILL.md). Claude Code picks it up automatically when the project is opened.
 
 ## Prerequisites
 
@@ -35,24 +43,6 @@ The `.env` file never contains RPC URLs, chain metadata, faucet toggles, or fact
 
 Real on-chain flows (mint, deploy, swap, bridge, faucet claim) require the wallet to be funded on the relevant network. Discovery flows are read-only and do not require any balance.
 
-## Installing the Skill
-
-Clone the repository, install dependencies, and fill in your `.env`:
-
-```bash
-## Install
-npx skills add omnihub-xyz/omnihub-skill -g -a claude-code -y
-
-## Manual Installation
-## Clone this repository to your skills directory:
-git clone https://github.com/omnihub-xyz/omnihub-skill.git ~/.claude/skills/omnihub-skill
-cd omnihub-skill
-npm install
-cp .env.example .env          # then fill in PRIVATE_KEY
-npm run tools:check           # optional — type-checks every tool
-```
-
-The skill definition lives at [`.claude/skills/omnihub-skill/SKILL.md`](.claude/skills/omnihub-skill/SKILL.md). Claude Code picks it up automatically when the project is opened.
 
 ## What's Included
 
@@ -207,6 +197,17 @@ create a collection on a testnet with supply 500
 
 The agent resolves chains, symbols, and amounts, then either proceeds directly or asks a single targeted question if something is missing.
 
+## Supported Chains
+
+This skill supports all chains currently available through OmniHub's chain registry — 70 networks at the time this section was generated, including 47 mainnets and 23 testnets. The skill resolves every chain's id, RPC, factory address, and faucet flag from `/api/chains` at runtime, so newly added networks become usable without any code change in this repo.
+
+**Mainnets:** Ethereum, Base, Optimism, Arbitrum One, Polygon, BNB Smart Chain, Avalanche, Linea, Scroll, Blast, Mantle, Mode, Zora, Taiko, Shape, Unichain, Soneium, Ink, Lisk, Morph, World Chain, Berachain, Hyper EVM, Sei Network, Ronin, Kaia, Story, Monad, MegaETH, Citrea, Stable, 0G, Mitosis, Plume, Somnia, Mezo, Ape Chain, Hemi, Gravity, Lens, Bob, Katana, Rari, Camp, Botanix, Plasma, Gate Layer.
+
+**Testnets:** Sepolia, OPN Testnet, Push Testnet, Stable Testnet, Arc Testnet, Pharos Atlantic Testnet, Neura Testnet, Giwa Testnet, IRYS Testnet, Fluent Testnet, ZenChain Testnet, Kii Testnet, Doma Testnet, Kite AI Testnet, RISE Testnet, Helios Testnet, X1 Testnet, Mawari Testnet, SANDchain Testnet, Robinhood Testnet, Tempo Testnet, SRW Testnet, LitVM LiteForge.
+
+This list was generated from the OmniHub `/api/chains` registry at the time of this README update. It is a static snapshot — for the live set of supported chains and their faucet/RPC flags, query `/api/chains` directly or run a discovery tool against any chain alias above.
+
+
 ## Safety / limitations
 
 - **Real funds.** Every write tool in this skill signs and broadcasts a real transaction from the configured `PRIVATE_KEY`. Test on a testnet first.
@@ -235,6 +236,7 @@ omnihub-skill/
 ```
 
 Tools are registered by string key in `src/tools/index.ts`. Adding a new tool is a three-step change within that same file: implement, export, and register.
+
 
 ## Learn More
 
