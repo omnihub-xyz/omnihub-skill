@@ -40,7 +40,7 @@ Real on-chain flows (mint, deploy, swap, bridge, faucet claim) require the walle
 Clone the repository, install dependencies, and fill in your `.env`:
 
 ```bash
-git clone https://github.com/omnihub-xyz/omnihub-skill.git
+git clone https://github.com/omnihub-xyz/omnihub-skill.git ~/.claude/skills/omnihub-skill
 cd omnihub-skill
 npm install
 cp .env.example .env          # then fill in PRIVATE_KEY
